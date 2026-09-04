@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akbar Uktamaliev — Android apps</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --panel: #ffffff;
+    --ink: #1b1b1a;
+    --muted: #5f5e5b;
+    --line: #e3e1dd;
+    --accent: #c2621a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16171a;
+      --panel: #1e2024;
+      --ink: #ecebe8;
+      --muted: #a3a19c;
+      --line: #2e3136;
+      --accent: #e08b45;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 20px 64px;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  main { max-width: 640px; margin: 0 auto; }
+  h1 { font-size: 28px; line-height: 1.25; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 40px; }
+  .app {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .mark {
+    flex: 0 0 auto;
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: var(--accent);
+    display: grid; place-items: center;
+    color: #fff; font-weight: 700; font-size: 20px;
+  }
+  .app h2 { font-size: 18px; margin: 2px 0 6px; }
+  .app p { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
+  a { color: var(--accent); }
+  .links a { margin-right: 16px; font-size: 15px; white-space: nowrap; }
+  footer {
+    margin-top: 40px; padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Akbar Uktamaliev</h1>
+  <p class="sub">Android apps, published on Google Play as New Android.</p>
+
+  <div class="app">
+    <div class="mark">BC</div>
+    <div>
+      <h2>BuildCalc: Material Calculator</h2>
+      <p>Seven offline calculators for construction and repair work: bricks,
+         concrete, screed, tile, laminate, paint and wallpaper. English,
+         Russian and Uzbek.</p>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc">Google&nbsp;Play</a>
+        <a href="https://sites.google.com/view/buildcalc--privacy/">Privacy&nbsp;policy</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Contact: <a href="mailto:akbaruktamaliyev@gmail.com">akbaruktamaliyev@gmail.com</a>
+  </footer>
+</main>
+</body>
+</html>
