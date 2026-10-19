@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oboy kalkulyatori — xona uchun necha rulon oboy kerakligini hisoblash</title>
+<meta name="description" content="Xona perimetri va balandligi boʻyicha oboy hisobi: polosalar, rulonlar, naqsh moslashtirish va eshik-derazalarni ayirish. Polosalar boʻyicha hisoblaymiz — rulon yetmay qolmasligi uchun.">
+<link rel="canonical" href="https://akbaruktamaliyev.github.io/uz/oboy.html">
+<link rel="alternate" hreflang="ru" href="https://akbaruktamaliyev.github.io/calculators/oboi.html">
+<link rel="alternate" hreflang="uz" href="https://akbaruktamaliyev.github.io/uz/oboy.html">
+<link rel="alternate" hreflang="x-default" href="https://akbaruktamaliyev.github.io/calculators/oboi.html">
+<meta property="og:title" content="Oboy kalkulyatori — xona uchun necha rulon oboy kerakligini hisoblash">
+<meta property="og:description" content="Xona perimetri va balandligi boʻyicha oboy hisobi: polosalar, rulonlar, naqsh moslashtirish va eshik-derazalarni ayirish. Polosalar boʻyicha hisoblaymiz — rulon yetmay qolmasligi uchun.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://akbaruktamaliyev.github.io/uz/oboy.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Oboy kalkulyatori","description":"Xona perimetri va balandligi boʻyicha oboy hisobi: polosalar, rulonlar, naqsh moslashtirish va eshik-derazalarni ayirish. Polosalar boʻyicha hisoblaymiz — rulon yetmay qolmasligi uchun.","url":"https://akbaruktamaliyev.github.io/uz/oboy.html","inLanguage":"uz","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"UZS"}}</script>
+<style>:root{--b:#0b5cad;--bg:#f6f8fb;--c:#fff;--t:#17202a;--m:#5b6673;--l:#d8dee6;--a:#e8f1fb}@media(prefers-color-scheme:dark){:root{--bg:#10151b;--c:#19212a;--t:#e8edf2;--m:#9aa6b2;--l:#2c3743;--a:#16283a;--b:#6aaeff}}*{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--t)}header,main,footer{max-width:720px;margin:0 auto;padding:0 16px}header{padding-top:12px;display:flex;justify-content:space-between;font-size:14px}a{color:var(--b)}h1{font-size:1.55rem;line-height:1.25;margin:.8em 0 .4em}h2{font-size:1.2rem;margin:1.6em 0 .5em}.lead,.m{color:var(--m)}.card{background:var(--c);border:1px solid var(--l);border-radius:12px;padding:14px 16px}.f{display:grid;gap:12px}label{display:block;font-weight:600;font-size:.95rem;margin-bottom:3px}label small{font-weight:400;color:var(--m)}input,select{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--l);border-radius:8px;background:var(--bg);color:var(--t);min-height:44px}input:focus,select:focus{outline:2px solid var(--b);outline-offset:1px}.h{font-size:.85rem;color:var(--m);margin:3px 0 0}.r{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--l)}.r:last-child{border:0}.r.m2{font-size:1.25rem;background:var(--a);margin:-14px -16px 6px;padding:14px 16px;border-radius:12px 12px 0 0;border-bottom:0}.err{color:#b3261e;font-weight:600}.btn{display:inline-block;background:var(--b);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;margin:14px 0 4px}@media(prefers-color-scheme:dark){.btn{color:#0b1520}}.btn small{display:block;font-weight:400;font-size:.8rem;opacity:.9}.dis{font-size:.9rem;color:var(--m);border-left:3px solid var(--l);padding-left:10px}ul.k{padding-left:20px}ul.n{list-style:none;padding:0;display:grid;gap:8px}ul.n a{display:block;padding:10px 14px;background:var(--c);border:1px solid var(--l);border-radius:10px;text-decoration:none}ul.n span{display:block;color:var(--m);font-size:.9rem}code{background:var(--a);padding:1px 5px;border-radius:4px;font-size:.92em}footer{padding-bottom:28px;margin-top:28px;font-size:.85rem;color:var(--m)}@media(min-width:600px){.f{grid-template-columns:1fr 1fr}.f .w{grid-column:1/-1}}</style>
+</head>
+<body>
+<header><a href="index.html">Kalkulyatorlar</a><a href="https://akbaruktamaliyev.github.io/calculators/oboi.html" hreflang="ru">По-русски</a></header>
+<main>
+<h1>Oboy kalkulyatori: nechta rulon kerak</h1>
+<p class="lead">Xona perimetri, devor balandligi va rulon oʻlchamlarini kiriting — polosalar va rulonlar soni darhol chiqadi.</p>
+<form class="card" onsubmit="return false" aria-label="Boshlangʻich maʼlumotlar">
+<div class="f">
+<div><label for="per">Xona perimetri <small>(m)</small></label><input id="per" type="text" inputmode="decimal" autocomplete="off" value="16"></div>
+<div><label for="hei">Devor balandligi <small>(m)</small></label><input id="hei" type="text" inputmode="decimal" autocomplete="off" value="2.7"></div>
+<div><label for="rw">Rulon eni <small>(m)</small></label><input id="rw" type="text" inputmode="decimal" autocomplete="off" value="0.53"></div>
+<div><label for="rl">Rulon uzunligi <small>(m)</small></label><input id="rl" type="text" inputmode="decimal" autocomplete="off" value="10.05"></div>
+<div><label for="rep">Naqsh takrori (raport) <small>(sm, ixtiyoriy)</small></label><input id="rep" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
+<div><label for="trim">Kesish uchun zaxira <small>(sm, ixtiyoriy)</small></label><input id="trim" type="text" inputmode="decimal" autocomplete="off" value="5"></div>
+<div><label for="open">Eshik va derazalarning umumiy eni <small>(m, ixtiyoriy)</small></label><input id="open" type="text" inputmode="decimal" autocomplete="off" value="2"></div>
+</div>
+</form>
+<h2>Natija</h2>
+<div class="card" id="res" aria-live="polite"></div>
+<p class="dis">Hisob-kitob taxminiy, kesish va yoʻqotishlar uchun zaxira qoʻshing.</p>
+<a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Doboi%26utm_campaign%3Duz" rel="noopener">BuildCalc ni oʻrnatish<small>Google Play’da bepul</small></a>
+<h2>Qanday hisoblanadi</h2>
+<p>Eshik va derazasiz devorlar eni = perimetr − ochiqliklar. Polosalar soni = shu en ÷ rulon eni, yuqoriga yaxlitlanadi. Polosa uzunligi = balandlik + raport + kesish uchun zaxira. Bitta rulondan <code>butun polosalar soni = rulon ÷ polosa uzunligi</code> (pastga) chiqadi, kerakli rulonlar esa polosalar ÷ rulondagi polosalar, yuqoriga.</p><p>Polosalar boʻyicha hisoblash maydon boʻyicha hisoblashdan ishonchliroq: rulon qoldigʻi devor balandligidan qisqa boʻlib, ishga yaramaydi, shuning uchun maydon boʻyicha hisob koʻpincha aslida kerakdan bitta rulon kam beradi.</p>
+<h2>Hisoblash misoli</h2>
+<p>Perimetr 14 m, balandlik 2,5 m, eshik va derazalar 1,8 m, rulon 0,53 × 10,05 m, zaxira 5 sm. 24 ta polosa kerak, bitta rulondan 3 ta polosa chiqadi — jami 8 rulon.</p>
+<h2>BuildCalc ilovasi nimalar qoʻshadi</h2>
+<ul class="k"><li>Bitta ilovada 17 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
+<a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Doboi%26utm_campaign%3Duz" rel="noopener">BuildCalc ni oʻrnatish<small>Google Play’da bepul</small></a>
+<h2>Boshqa kalkulyatorlar</h2>
+<ul class="n"><li><a href="g-isht.html">Gʻisht kalkulyatori<span>Devor uchun gʻisht miqdori</span></a></li><li><a href="plitka.html">Plitka kalkulyatori<span>Plitka, yelim va fuga miqdori</span></a></li><li><a href="beton.html">Beton kalkulyatori<span>Beton hajmi, sement, qum va shagʻal</span></a></li><li><a href="laminat.html">Laminat kalkulyatori<span>Pol uchun laminat paketlari soni</span></a></li><li><a href="index.html">Barcha kalkulyatorlar</a></li></ul>
+</main>
+<footer>BuildCalc — Android uchun qurilish hisob-kitoblari ilovasi.</footer>
+<script>
+(function(){
+function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
+/*CALC*/function calc(v){var us=Math.max(0,v.per-v.open),strips=Math.ceil(us/v.rw),sl=v.hei+v.rep/100+v.trim/100,spr=Math.floor(v.rl/sl);return spr>0?{strips:strips,spr:spr,rolls:Math.ceil(strips/spr)}:{strips:strips,spr:0,rolls:null,err:1}}/*END*/
+var F=[{"id":"per","s":0,"o":0,"z":0},{"id":"hei","s":0,"o":0,"z":0},{"id":"rw","s":0,"o":0,"z":0},{"id":"rl","s":0,"o":0,"z":0},{"id":"rep","s":0,"o":1,"z":0},{"id":"trim","s":0,"o":1,"z":0},{"id":"open","s":0,"o":1,"z":0}],O=[{"k":"rolls","m":1,"d":0,"l":"Kerakli rulonlar","u":" dona"},{"k":"strips","m":0,"d":0,"l":"Polosalar","u":""},{"k":"spr","m":0,"d":0,"l":"Bir rulondan polosalar","u":""}],ERR="Polosa rulondan uzun — uzunroq rulon tanlang yoki balandlik va raportni tekshiring.",R=document.getElementById("res");
+function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
+r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';
+for(i=0;i<O.length;i++){o=O[i];val=r[o.k];if(val===null||val===undefined||!isFinite(val))continue;h+='<div class="r'+(o.m?' m2':'')+'"><span>'+o.l+'</span><b>'+fmt(val,o.d)+o.u+'</b></div>'}
+R.innerHTML=h}
+var els=document.querySelectorAll("input,select");for(var k=0;k<els.length;k++){els[k].addEventListener("input",run);els[k].addEventListener("change",run)}
+run()})();
+</script>
+</body>
+</html>
