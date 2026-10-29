@@ -25,7 +25,7 @@
 <div class="f">
 <div><label for="len">Длина стены <small>(м)</small></label><input id="len" type="text" inputmode="decimal" autocomplete="off" value="10"></div>
 <div><label for="hei">Высота стены <small>(м)</small></label><input id="hei" type="text" inputmode="decimal" autocomplete="off" value="3"></div>
-<div><label for="size">Размер блока (длина × высота × толщина стены, мм)</label><select id="size"><option value="0" selected>600×200×300</option><option value="1">600×250×300</option><option value="2">600×200×200</option><option value="3">625×250×300</option></select></div>
+<div><label for="size">Размер блока (длина × высота × толщина стены, мм)</label><select id="size"><option value="0" selected>600×200×300</option><option value="1">600×250×300</option><option value="2">600×200×200</option><option value="3">625×250×300</option><option value="4">600×200×100</option><option value="5">600×250×400</option></select></div>
 <div><label for="bag">Вес мешка клея <small>(кг)</small></label><input id="bag" type="text" inputmode="decimal" autocomplete="off" value="25"></div>
 <div><label for="open">Проёмы (окна, двери) <small>(м², необязательно)</small></label><input id="open" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
 <div><label for="waste">Запас <small>(%, необязательно)</small></label><input id="waste" type="text" inputmode="decimal" autocomplete="off" value="5"></div>
@@ -40,7 +40,7 @@
 <h2>Пример расчёта</h2>
 <p>Стена 7 × 3 м, проёмов нет, блок 600×200×300 мм, запас 5%, мешок клея 25 кг. Площадь стены 21 м², объём кладки 6,3 м³. Нужно блоков: 184, мешков клея: 7 (158 кг).</p>
 <h2>Что добавляет приложение BuildCalc</h2>
-<ul class="k"><li>28 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
+<ul class="k"><li>30 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Dgazoblok%26utm_campaign%3Dru" rel="noopener">Установить BuildCalc<small>Бесплатно в Google Play</small></a>
 <h2>Другие калькуляторы</h2>
 <ul class="n"><li><a href="kirpich.html">Калькулятор кирпича<span>Сколько кирпича нужно на стену</span></a></li><li><a href="shtukaturka.html">Калькулятор штукатурки<span>Смесь и мешки на стены</span></a></li><li><a href="gipsokarton.html">Калькулятор гипсокартона<span>Листы, профиль, саморезы и шпаклёвка</span></a></li><li><a href="beton.html">Калькулятор бетона<span>Объём бетона, цемент, песок и щебень</span></a></li><li><a href="armatura.html">Калькулятор арматуры<span>Вес и длина арматурных стержней</span></a></li><li><a href="fundament.html">Калькулятор фундамента<span>Бетон, арматура, хомуты и опалубка ленты</span></a></li><li><a href="uteplitel.html">Калькулятор утеплителя<span>Плиты, упаковки и объём утеплителя</span></a></li><li><a href="index.html">Все калькуляторы</a></li></ul>
@@ -49,7 +49,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var S=[[600,200,300],[600,250,300],[600,200,200],[625,250,300]][v.size]||[600,200,300],bl=S[0]/1000,bh=S[1]/1000,wt=S[2]/1000,area=Math.max(0,Math.max(0,v.len)*Math.max(0,v.hei)-Math.max(0,v.open)),waste=1+Math.max(0,v.waste)/100,vol=area*wt,bv=bl*bh*wt,cnt=bv>0?vol/bv*waste:NaN,glue=vol*25;return{blocks:Math.ceil(cnt),bags:v.bag>0?Math.ceil(glue/v.bag):NaN,glue:glue,area:area,vol:vol}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},S=[[600,200,300],[600,250,300],[600,200,200],[625,250,300],[600,200,100],[600,250,400]][v.size]||[600,200,300],bl=S[0]/1000,bh=S[1]/1000,wt=S[2]/1000,area=M(0,M(0,v.len)*M(0,v.hei)-M(0,v.open)),waste=1+M(0,v.waste)/100,vol=area*wt,bv=bl*bh*wt,cnt=bv>0?vol/bv*waste:NaN,glue=vol*25;return{blocks:c(cnt),bags:v.bag>0?c(glue/v.bag):NaN,glue:glue,area:area,vol:vol}}/*END*/
 var F=[{"id":"len","s":0,"o":0,"z":0},{"id":"hei","s":0,"o":0,"z":0},{"id":"size","s":1,"o":0,"z":0},{"id":"bag","s":0,"o":0,"z":0},{"id":"open","s":0,"o":1,"z":0},{"id":"waste","s":0,"o":1,"z":0}],O=[{"k":"blocks","m":1,"d":0,"l":"Блоков нужно","u":" шт."},{"k":"bags","m":0,"d":0,"l":"Мешков клея","u":""},{"k":"glue","m":0,"d":0,"l":"Клей","u":" кг"},{"k":"area","m":0,"d":2,"l":"Площадь стены","u":" м²"},{"k":"vol","m":0,"d":3,"l":"Объём кладки","u":" м³"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

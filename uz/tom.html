@@ -40,7 +40,7 @@
 <h2>Hisoblash misoli</h2>
 <p>Ikki qiyalikli tom: qiyalik 4,5 m, tepa boʻylab uzunlik 12 m, varaqning foydali kengligi 1,1 m, karniz chiqishi 0,05 m, zaxira 5%. 4,55 m uzunlikdagi 24 ta varaq kerak, tom maydoni 108 m², tepa 12 m.</p>
 <h2>BuildCalc ilovasi nimalar qoʻshadi</h2>
-<ul class="k"><li>Bitta ilovada 28 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
+<ul class="k"><li>Bitta ilovada 30 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Dkrovlya%26utm_campaign%3Duz" rel="noopener">BuildCalc ni oʻrnatish<small>Google Play’da bepul</small></a>
 <h2>Boshqa kalkulyatorlar</h2>
 <ul class="n"><li><a href="tosiq.html">Toʻsiq kalkulyatori<span>Varaqlar, ustunlar va lag quvurlari</span></a></li><li><a href="izolyatsiya.html">Izolyatsiya kalkulyatori<span>Izolyatsiya plitalari, paketlar va hajm</span></a></li><li><a href="poydevor.html">Poydevor kalkulyatori<span>Lentali poydevor uchun beton, armatura, xomut va qolip</span></a></li><li><a href="index.html">Barcha kalkulyatorlar</a></li></ul>
@@ -49,7 +49,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var M=Math.max,slope=M(0,v.slope),ridge=M(0,v.ridge),sl=v.type==0?1:2,u=v.useful,wa=1+M(0,v.waste)/100,per=u>0?Math.ceil(ridge/u-1e-9):NaN,sh=per*sl*wa;return{sheets:isFinite(sh)?M(0,Math.ceil(sh)):NaN,len:slope+M(0,v.overhang),area:slope*ridge*sl,ridge:ridge}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},slope=M(0,v.slope),ridge=M(0,v.ridge),sl=v.type==0?1:2,u=v.useful,wa=1+M(0,v.waste)/100,per=u>0?cc(ridge/u):NaN,sh=per*sl*wa;return{sheets:c(sh),len:slope+M(0,v.overhang),area:slope*ridge*sl,ridge:ridge}}/*END*/
 var F=[{"id":"slope","s":0,"o":0,"z":0},{"id":"ridge","s":0,"o":0,"z":0},{"id":"type","s":1,"o":0,"z":0},{"id":"useful","s":0,"o":0,"z":0},{"id":"overhang","s":0,"o":0,"z":1},{"id":"waste","s":0,"o":1,"z":0}],O=[{"k":"sheets","m":1,"d":0,"l":"Varaqlar","u":" dona"},{"k":"len","m":0,"d":2,"l":"Varaq uzunligi","u":" m"},{"k":"area","m":0,"d":2,"l":"Tom maydoni","u":" m²"},{"k":"ridge","m":0,"d":1,"l":"Tepa uzunligi","u":" m"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

@@ -40,7 +40,7 @@
 <h2>Пример расчёта</h2>
 <p>Площадь 80 м², проёмы 6 м², толщина 150 мм, плиты 1000×600 мм по 4 штуки в упаковке, запас 7%. Чистая площадь 74 м², нужно 132 плит, это 33 упаковок, объём утеплителя 11,88 м³.</p>
 <h2>Что добавляет приложение BuildCalc</h2>
-<ul class="k"><li>28 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
+<ul class="k"><li>30 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Duteplitel%26utm_campaign%3Dru" rel="noopener">Установить BuildCalc<small>Бесплатно в Google Play</small></a>
 <h2>Другие калькуляторы</h2>
 <ul class="n"><li><a href="shtukaturka.html">Калькулятор штукатурки<span>Смесь и мешки на стены</span></a></li><li><a href="gipsokarton.html">Калькулятор гипсокартона<span>Листы, профиль, саморезы и шпаклёвка</span></a></li><li><a href="krovlya.html">Калькулятор кровли<span>Листы металлочерепицы и профнастила на крышу</span></a></li><li><a href="index.html">Все калькуляторы</a></li></ul>
@@ -49,7 +49,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var M=Math.max,net=M(0,v.area-M(0,v.openings)),wa=1+M(0,v.waste)/100,bd=Math.ceil(net*wa/v.board-1e-9)+0,pp=v.perPack,packs=pp>0?bd/pp:NaN;return{packs:isFinite(packs)?M(0,Math.ceil(packs)):NaN,boards:bd,vol:net*M(0,v.thickness)/1000*wa,net:net}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},net=M(0,v.area-M(0,v.openings)),wa=1+M(0,v.waste)/100,bd=cc(net*wa/v.board),pp=v.perPack,packs=pp>0?bd/pp:NaN;return{packs:c(packs),boards:bd,vol:net*M(0,v.thickness)/1000*wa,net:net}}/*END*/
 var F=[{"id":"area","s":0,"o":0,"z":0},{"id":"thickness","s":0,"o":0,"z":0},{"id":"board","s":1,"o":0,"z":0},{"id":"perPack","s":0,"o":0,"z":0},{"id":"openings","s":0,"o":1,"z":0},{"id":"waste","s":0,"o":1,"z":0}],O=[{"k":"packs","m":1,"d":0,"l":"Пачек","u":" упак."},{"k":"boards","m":0,"d":0,"l":"Плиты","u":" шт."},{"k":"vol","m":0,"d":2,"l":"Объём","u":" м³"},{"k":"net","m":0,"d":2,"l":"Чистая площадь","u":" м²"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

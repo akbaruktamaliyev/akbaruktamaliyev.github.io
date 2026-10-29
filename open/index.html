@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>BuildCalc — открыть расчёт</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; margin: 0; padding: 24px 16px; background: #f2f1ee; color: #14171a; }
+  main { max-width: 480px; margin: 0 auto; }
+  a.button { display: block; margin: 12px 0; padding: 14px; border-radius: 12px; text-align: center; text-decoration: none; font-weight: 600; }
+  a.primary { background: #bc4108; color: #fff; }
+  a.secondary { background: #fff; color: #14171a; border: 1px solid #8b8880; }
+  @media (prefers-color-scheme: dark) { body { background: #101315; color: #e8e6e3; } a.secondary { background: #171b1e; color: #e8e6e3; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Расчёт BuildCalc</h1>
+  <p id="note">Открываем расчёт в приложении…</p>
+  <a id="app" class="button primary" href="#">Открыть в приложении</a>
+  <a id="play" class="button secondary" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dopen_link%26utm_medium%3Dweb">Установить из Google Play</a>
+</main>
+<script>
+  // Данные расчёта лежат в самой ссылке (?c=…&n=…&s=…) и никуда не отправляются: страница только передаёт их приложению.
+  var query = location.search;
+  var target = 'buildcalc://open' + query;
+  document.getElementById('app').href = target;
+  if (query.indexOf('c=') !== -1) setTimeout(function () { location.href = target; }, 300);
+  else document.getElementById('note').textContent = 'В ссылке нет расчёта.';
+</script>
+</body>
+</html>

@@ -38,7 +38,7 @@
 <h2>Hisoblash misoli</h2>
 <p>Pol 20 m², styajka 50 mm, sarf 1 mm uchun 1,8 kg/m², qop 25 kg. Styajka hajmi 1 m³, aralashma 1 800 kg, yaʼni 72 qop kerak.</p>
 <h2>BuildCalc ilovasi nimalar qoʻshadi</h2>
-<ul class="k"><li>Bitta ilovada 28 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
+<ul class="k"><li>Bitta ilovada 30 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Dstyazhka%26utm_campaign%3Duz" rel="noopener">BuildCalc ni oʻrnatish<small>Google Play’da bepul</small></a>
 <h2>Boshqa kalkulyatorlar</h2>
 <ul class="n"><li><a href="beton.html">Beton kalkulyatori<span>Beton hajmi, sement, qum va shagʻal</span></a></li><li><a href="plitka.html">Plitka kalkulyatori<span>Plitka, yelim va fuga miqdori</span></a></li><li><a href="laminat.html">Laminat kalkulyatori<span>Pol uchun laminat paketlari soni</span></a></li><li><a href="suvoq.html">Suvoq kalkulyatori<span>Devorlar uchun aralashma va qoplar</span></a></li><li><a href="armatura.html">Armatura kalkulyatori<span>Armatura sterjenlarining ogʻirligi va uzunligi</span></a></li><li><a href="quyma-pol.html">Quyma pol kalkulyatori<span>Aralashma qoplari va quyishdan oldingi gruntovka</span></a></li><li><a href="gidroizolyatsiya.html">Gidroizolyatsiya kalkulyatori<span>Mastika, chelaklar va zichlovchi lenta</span></a></li><li><a href="index.html">Barcha kalkulyatorlar</a></li></ul>
@@ -47,7 +47,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var area=Math.max(0,v.area),th=Math.max(0,v.th),vol=area*th/1000,mix=area*th*v.cons;return{bags:v.bag>0?Math.ceil(mix/v.bag):NaN,mix:mix,vol:vol}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},area=M(0,v.area),th=M(0,v.th),vol=area*th/1000,mix=area*th*M(0,v.cons);return{bags:v.bag>0?c(mix/v.bag):NaN,mix:mix,vol:vol}}/*END*/
 var F=[{"id":"area","s":0,"o":0,"z":0},{"id":"th","s":0,"o":0,"z":0},{"id":"cons","s":0,"o":0,"z":0},{"id":"bag","s":0,"o":0,"z":0}],O=[{"k":"bags","m":1,"d":0,"l":"Quruq aralashma qoplari","u":""},{"k":"mix","m":0,"d":0,"l":"Quruq aralashma","u":" kg"},{"k":"vol","m":0,"d":3,"l":"Styajka hajmi","u":" m³"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

@@ -36,7 +36,7 @@
 <h2>Hisoblash misoli</h2>
 <p>Qavatlar orasidagi balandlik 3 m, pogʻonaning kerakli balandligi 175 mm. 176 mm dan 17 ta pogʻona chiqadi, pogʻona kengligi 277 mm (16 ta taxta), gorizontal proyeksiya 4,43 m, kosour 5,35 m, burchak taxminan 34°.</p>
 <h2>BuildCalc ilovasi nimalar qoʻshadi</h2>
-<ul class="k"><li>Bitta ilovada 28 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
+<ul class="k"><li>Bitta ilovada 30 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Dlestnitsa%26utm_campaign%3Duz" rel="noopener">BuildCalc ni oʻrnatish<small>Google Play’da bepul</small></a>
 <h2>Boshqa kalkulyatorlar</h2>
 <ul class="n"><li><a href="beton.html">Beton kalkulyatori<span>Beton hajmi, sement, qum va shagʻal</span></a></li><li><a href="poydevor.html">Poydevor kalkulyatori<span>Lentali poydevor uchun beton, armatura, xomut va qolip</span></a></li><li><a href="tom.html">Tom kalkulyatori<span>Tom uchun metall cherepitsa va profnastil varaqlari</span></a></li><li><a href="index.html">Barcha kalkulyatorlar</a></li></ul>
@@ -45,7 +45,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var M=Math.max,hm=M(0,v.height)*1000,t=v.riser,n=(hm>0&&t>0)?M(1,Math.round(hm/t)):NaN,r=hm/n,tr=M(0,630-2*r),run=(n-1)*tr/1000,H=hm/1000;return{n:isFinite(n)?M(0,Math.ceil(n)):NaN,tr:isFinite(n-1)?M(0,Math.ceil(n-1)):NaN,r:r,t:tr,run:run,st:Math.sqrt(H*H+run*run),ang:Math.atan(H/run)*180/Math.PI}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},hm=M(0,v.height)*1000,t=v.riser,n=(hm>0&&t>0)?M(1,Math.round(hm/t)):NaN,r=hm/n,tr=M(0,630-2*r),run=(n-1)*tr/1000,H=hm/1000;return{n:c(n),tr:c(n-1),r:r,t:tr,run:run,st:Math.sqrt(H*H+run*run),ang:Math.atan(H/run)*180/Math.PI}}/*END*/
 var F=[{"id":"height","s":0,"o":0,"z":0},{"id":"riser","s":0,"o":0,"z":0}],O=[{"k":"n","m":1,"d":0,"l":"Pogʻonalar","u":" dona"},{"k":"tr","m":0,"d":0,"l":"Pogʻona taxtalari","u":" dona"},{"k":"r","m":0,"d":0,"l":"Pogʻona balandligi","u":" mm"},{"k":"t","m":0,"d":0,"l":"Pogʻona kengligi (2h + b = 630)","u":" mm"},{"k":"run","m":0,"d":2,"l":"Gorizontal proyeksiya","u":" m"},{"k":"st","m":0,"d":2,"l":"Kosour uzunligi","u":" m"},{"k":"ang","m":0,"d":0,"l":"Qiyalik burchagi","u":"°"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

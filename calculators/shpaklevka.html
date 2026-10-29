@@ -42,7 +42,7 @@
 <h2>Пример расчёта</h2>
 <p>Стены 60 м², слой шпаклёвки 3 мм, расход 1 кг/м²·мм, мешок 25 кг, грунт 0,15 л/м² в 2 слоя, банка 10 л, запас 10%. Шпаклёвки 198 кг — это 8 мешков; грунта 19,8 л — это 2 банок.</p>
 <h2>Что добавляет приложение BuildCalc</h2>
-<ul class="k"><li>28 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
+<ul class="k"><li>30 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Dshpaklevka%26utm_campaign%3Dru" rel="noopener">Установить BuildCalc<small>Бесплатно в Google Play</small></a>
 <h2>Другие калькуляторы</h2>
 <ul class="n"><li><a href="shtukaturka.html">Калькулятор штукатурки<span>Смесь и мешки на стены</span></a></li><li><a href="kraska.html">Калькулятор краски<span>Литры и банки на стены и потолок</span></a></li><li><a href="gipsokarton.html">Калькулятор гипсокартона<span>Листы, профиль, саморезы и шпаклёвка</span></a></li><li><a href="oboi.html">Калькулятор обоев<span>Сколько рулонов обоев нужно на комнату</span></a></li><li><a href="index.html">Все калькуляторы</a></li></ul>
@@ -51,7 +51,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var M=Math.max,area=M(0,v.area),wa=1+M(0,v.waste)/100,kg=area*M(0,v.thickness)*v.rate*wa,bag=v.bag,pl=area*v.prate*v.coats*wa,can=v.can,c=function(x){return isFinite(x)?M(0,Math.ceil(x)):NaN};return{bags:c(bag>0?kg/bag:NaN),kg:kg,cans:c(can>0?pl/can:NaN),pl:pl}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},area=M(0,v.area),wa=1+M(0,v.waste)/100,kg=area*M(0,v.thickness)*M(0,v.rate)*wa,bag=v.bag,pl=area*M(0,v.prate)*M(0,v.coats)*wa,can=v.can;return{bags:c(bag>0?kg/bag:NaN),kg:kg,cans:c(can>0?pl/can:NaN),pl:pl}}/*END*/
 var F=[{"id":"area","s":0,"o":0,"z":0},{"id":"thickness","s":0,"o":0,"z":0},{"id":"rate","s":0,"o":0,"z":1},{"id":"bag","s":0,"o":0,"z":0},{"id":"prate","s":0,"o":0,"z":1},{"id":"coats","s":0,"o":0,"z":1},{"id":"can","s":0,"o":0,"z":0},{"id":"waste","s":0,"o":1,"z":0}],O=[{"k":"bags","m":1,"d":0,"l":"Мешков","u":" меш."},{"k":"kg","m":0,"d":0,"l":"Шпаклёвка","u":" кг"},{"k":"cans","m":0,"d":0,"l":"Банки грунта","u":" шт."},{"k":"pl","m":0,"d":1,"l":"Грунтовка","u":" л"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

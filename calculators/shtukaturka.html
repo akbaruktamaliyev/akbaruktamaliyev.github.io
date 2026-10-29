@@ -39,7 +39,7 @@
 <h2>Пример расчёта</h2>
 <p>Стены 20 м², слой 15 мм, гипсовая смесь, запас 10%, мешок 30 кг. Нужно 297 кг сухой смеси, то есть 10 мешков.</p>
 <h2>Что добавляет приложение BuildCalc</h2>
-<ul class="k"><li>28 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
+<ul class="k"><li>30 калькуляторов, смета и PDF в одном приложении</li><li>Цены материалов и итоговая стоимость</li><li>История расчётов</li><li>Работает без интернета</li><li>Можно поделиться списком материалов</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Dshtukaturka%26utm_campaign%3Dru" rel="noopener">Установить BuildCalc<small>Бесплатно в Google Play</small></a>
 <h2>Другие калькуляторы</h2>
 <ul class="n"><li><a href="kirpich.html">Калькулятор кирпича<span>Сколько кирпича нужно на стену</span></a></li><li><a href="gazoblok.html">Калькулятор газоблока<span>Блоки и клей на стену</span></a></li><li><a href="kraska.html">Калькулятор краски<span>Литры и банки на стены и потолок</span></a></li><li><a href="gipsokarton.html">Калькулятор гипсокартона<span>Листы, профиль, саморезы и шпаклёвка</span></a></li><li><a href="styazhka.html">Калькулятор стяжки<span>Объём и мешки сухой смеси</span></a></li><li><a href="shpaklevka.html">Калькулятор шпаклёвки и грунтовки<span>Мешки шпаклёвки и банки грунта</span></a></li><li><a href="uteplitel.html">Калькулятор утеплителя<span>Плиты, упаковки и объём утеплителя</span></a></li><li><a href="index.html">Все калькуляторы</a></li></ul>
@@ -48,7 +48,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var rate=[0.9,1.8][v.type]||0.9,mix=Math.max(0,v.area)*Math.max(0,v.th)*rate*(1+Math.max(0,v.waste)/100);return{bags:v.bag>0?Math.ceil(mix/v.bag):NaN,mix:mix}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},rate=[0.9,1.8][v.type]||0.9,mix=M(0,v.area)*M(0,v.th)*rate*(1+M(0,v.waste)/100);return{bags:v.bag>0?c(mix/v.bag):NaN,mix:mix}}/*END*/
 var F=[{"id":"area","s":0,"o":0,"z":0},{"id":"th","s":0,"o":0,"z":0},{"id":"type","s":1,"o":0,"z":0},{"id":"bag","s":0,"o":0,"z":0},{"id":"waste","s":0,"o":1,"z":0}],O=[{"k":"bags","m":1,"d":0,"l":"Мешков смеси","u":""},{"k":"mix","m":0,"d":0,"l":"Сухая смесь","u":" кг"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

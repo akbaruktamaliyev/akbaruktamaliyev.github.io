@@ -40,7 +40,7 @@
 <h2>Hisoblash misoli</h2>
 <p>Pol 15 m², taxta 192 × 1285 mm, paketda 8 taxta, zaxira 7% va diagonal yotqizish (+6%). 69 taxta, ya’ni 9 paket va 16,95 m² taglik kerak.</p>
 <h2>BuildCalc ilovasi nimalar qoʻshadi</h2>
-<ul class="k"><li>Bitta ilovada 28 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
+<ul class="k"><li>Bitta ilovada 30 kalkulyator, smeta va PDF</li><li>Material narxlari va umumiy xarajat</li><li>Hisob-kitoblar tarixi</li><li>Internetsiz ishlaydi</li><li>Materiallar roʻyxati bilan ulashish mumkin</li></ul>
 <a class="btn" href="https://play.google.com/store/apps/details?id=uz.uktamaliyev.buildcalc&amp;referrer=utm_source%3Dweb%26utm_medium%3Dlaminat%26utm_campaign%3Duz" rel="noopener">BuildCalc ni oʻrnatish<small>Google Play’da bepul</small></a>
 <h2>Boshqa kalkulyatorlar</h2>
 <ul class="n"><li><a href="g-isht.html">Gʻisht kalkulyatori<span>Devor uchun gʻisht miqdori</span></a></li><li><a href="plitka.html">Plitka kalkulyatori<span>Plitka, yelim va fuga miqdori</span></a></li><li><a href="oboy.html">Oboy kalkulyatori<span>Xona uchun oboy rulonlari soni</span></a></li><li><a href="beton.html">Beton kalkulyatori<span>Beton hajmi, sement, qum va shagʻal</span></a></li><li><a href="styajka.html">Styajka kalkulyatori<span>Hajm va quruq aralashma qoplari</span></a></li><li><a href="plintus.html">Plintus kalkulyatori<span>Plintus plankalari va burchak elementlari</span></a></li><li><a href="index.html">Barcha kalkulyatorlar</a></li></ul>
@@ -49,7 +49,7 @@
 <script>
 (function(){
 function num(s,o){s=String(s).trim().replace(/\s/g,"").replace(",",".");if(s==="")return o?0:null;if(!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s))return null;var n=+s;return(n<0||n>1e9)?null:n}function fmt(n,d){return n.toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:d})}
-/*CALC*/function calc(v){var aw=v.area*(1+(v.waste+v.lay)/100),pa=v.w/1000*v.len/1000,planks=Math.ceil(aw/pa),packs=Math.ceil(planks/v.pk);return{packs:packs,planks:planks,under:Math.round(aw*100)/100}}/*END*/
+/*CALC*/function calc(v){var M=Math.max,cc=function(x){return Math.ceil(x-1e-9*M(1,Math.abs(x)))+0},fc=function(x){return Math.floor(x+1e-9*M(1,Math.abs(x)))+0},c=function(x){return isFinite(x)?M(0,cc(x)):NaN},aw=M(0,v.area)*(1+(M(0,v.waste)+v.lay)/100),pa=M(0,v.w)/1000*M(0,v.len)/1000,planks=pa>0?cc(aw/pa):NaN,packs=v.pk>0&&isFinite(planks)?c(planks/v.pk):NaN;return{packs:packs,planks:planks,under:Math.round(aw*100)/100}}/*END*/
 var F=[{"id":"area","s":0,"o":0,"z":0},{"id":"w","s":0,"o":0,"z":0},{"id":"len","s":0,"o":0,"z":0},{"id":"pk","s":0,"o":0,"z":0},{"id":"waste","s":0,"o":1,"z":0},{"id":"lay","s":1,"o":0,"z":0}],O=[{"k":"packs","m":1,"d":0,"l":"Kerakli paketlar","u":" dona"},{"k":"planks","m":0,"d":0,"l":"Taxtalar","u":" dona"},{"k":"under","m":0,"d":2,"l":"Taglik","u":" m²"}],ERR="",R=document.getElementById("res");
 function run(){var v={},i,f,x,r,h="",o,val;for(i=0;i<F.length;i++){f=F[i];x=document.getElementById(f.id).value;if(f.s){x=+x}else{x=num(x,f.o);if(x===null||(!f.o&&!f.z&&x<=0)){R.innerHTML="";return}}v[f.id]=x}
 r=calc(v);if(r.err)h+='<p class="err">'+ERR+'</p>';

@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "uz.uktamaliyev.buildcalc",
+      "sha256_cert_fingerprints":
+        ["74:2B:59:0D:EE:76:E3:BB:BE:94:D8:D5:FC:3C:00:B6:E5:8A:2A:63:1C:1E:9A:4B:C8:A0:4E:CA:C3:97:2D:0D"]
+    }
+  }
+]
